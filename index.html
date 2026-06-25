@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>𝟟𝔹𝟠𝕋 | 永遠無規則</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        html { scroll-behavior: smooth; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { background-color: #0d1117; color: #c9d1d9; font-family: 'Segoe UI', "Microsoft JhengHei", sans-serif; line-height: 1.5; }
+
+        .navbar {
+            background-color: rgba(57, 197, 187, 0.2) !important;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(57, 197, 187, 0.3);
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 5%;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+        }
+        .nav-left { display: flex; align-items: center; }
+        .nav-right { display: flex; gap: 20px; }
+        .nav-link { color: #39c5bb; text-decoration: none; font-size: 0.95rem; font-weight: 600; transition: 0.3s; text-shadow: 0 0 5px rgba(57, 197, 187, 0.3); }
+        .nav-link:hover { color: #fff; opacity: 0.8; }
+        .cube-icon { font-size: 1.6rem; color: #39c5bb; margin-right: 12px; filter: drop-shadow(0 0 5px rgba(57, 197, 187, 0.5)); }
+        .brand { color: #fff; font-size: 1.3rem; font-weight: bold; text-shadow: 0 0 10px rgba(57, 197, 187, 0.5); }
+
+        .hero {
+            padding: 100px 20px;
+            text-align: center;
+            background: radial-gradient(circle at 50% 30%, #112d2b 0%, #0d1117 70%);
+            position: relative;
+        }
+        .hero h1 { font-size: 3.5rem; color: #fff; text-shadow: 0 0 20px rgba(57, 197, 187, 0.6); letter-spacing: 4px; }
+        
+        .copy-card {
+            background: rgba(57, 197, 187, 0.15);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(57, 197, 187, 0.35);
+            border-radius: 16px;
+            padding: 30px 25px;
+            width: 340px;
+            margin: 30px auto;
+            cursor: pointer;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37), 0 0 20px rgba(57, 197, 187, 0.2);
+            transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+            user-select: none;
+            color: #fff;
+        }
+        .copy-card:hover { border-color: rgba(57, 197, 187, 0.6); box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.45), 0 0 30px rgba(57, 197, 187, 0.4); }
+        .copy-card:active { transform: scale(0.95); filter: brightness(1.2); }
+        .ip-box { background: rgba(0, 0, 0, 0.3); padding: 12px; border-radius: 8px; margin: 15px 0; font-family: monospace; font-size: 1.5rem; color: #39c5bb; font-weight: bold; border: 1px solid rgba(57, 197, 187, 0.2); text-shadow: 0 0 8px rgba(57, 197, 187, 0.4); }
+        
+        .ripple {
+            position: absolute; background: rgba(57, 197, 187, 0.4);
+            border-radius: 50%; transform: scale(0);
+            animation: ripple-animation 0.6s linear; pointer-events: none;
+        }
+        @keyframes ripple-animation { to { transform: scale(4); opacity: 0; } }
+
+        .grid-container {
+            background: #fff;
+            padding: 60px 5%;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .item, .anarchy-item {
+            background: #fff; padding: 30px 20px; border-radius: 15px;
+            color: #1f2328; box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            text-align: center; transition: 0.3s; border: 1px solid #f0f0f0;
+        }
+        .item:hover, .anarchy-item:hover { transform: translateY(-5px); }
+        .item i { font-size: 2.5rem; color: #39c5bb; margin-bottom: 20px; }
+        .anarchy-item i { font-size: 2.5rem; color: #ff5555; margin-bottom: 20px; }
+
+        .live-status-section {
+            background: radial-gradient(circle at 50% 50%, #11161d 0%, #0d1117 100%);
+            padding: 80px 5% 60px 5%;
+            border-top: 1px solid #30363d;
+        }
+        .section-title { text-align: center; margin-bottom: 40px; }
+        .section-title h2 { color: #fff; font-size: 1.8rem; margin-bottom: 10px; }
+        .dashboard-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px; max-width: 1000px; margin: 0 auto;
+        }
+        .stat-card { 
+            background: rgba(255, 255, 255, 0.03); 
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.08); 
+            border-radius: 14px; 
+            padding: 25px; 
+            text-align: center; 
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.15);
+        }
+        .stat-value { font-size: 1.5rem; font-weight: bold; color: #39c5bb; display: block; margin-top: 10px; text-shadow: 0 0 10px rgba(57, 197, 187, 0.3); }
+
+        #player-list {
+            display: flex; flex-wrap: wrap; justify-content: center;
+            gap: 20px; max-width: 1000px; margin: 30px auto 0 auto;
+        }
+        .player-card {
+            text-align: center; 
+            background: rgba(255, 255, 255, 0.02); 
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            padding: 15px;
+            border-radius: 12px; 
+            border: 1px solid rgba(255, 255, 255, 0.06); 
+            width: 120px;
+            transition: 0.3s;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+        .player-card:hover { transform: scale(1.05); border-color: rgba(57, 197, 187, 0.5); box-shadow: 0 4px 25px rgba(57, 197, 187, 0.2); }
+
+        .footer { background-color: #0d1117; padding: 60px 20px; text-align: center; border-top: 1px solid #30363d; }
+        .footer-icons { display: flex; justify-content: center; gap: 35px; margin-bottom: 30px; }
+        .footer-icons a { font-size: 3rem; transition: 0.3s; }
+        .footer-icons .fa-discord { color: #5865f2; filter: drop-shadow(0 4px 10px rgba(88, 101, 242, 0.3)); }
+        
+        .float-btns { position: fixed; bottom: 30px; right: 20px; display: flex; flex-direction: column; gap: 12px; z-index: 9999; }
+        .float-btn {
+            width: 55px; height: 55px; border-radius: 50%; display: flex;
+            align-items: center; justify-content: center; color: #fff;
+            text-decoration: none; font-size: 1.5rem; box-shadow: 0 4px 15px rgba(0,0,0,0.3); transition: 0.3s;
+        }
+        .f-dc { background: #5865f2; box-shadow: 0 4px 20px rgba(88, 101, 242, 0.4); }
+        .float-btn:hover { transform: scale(1.1); }
+
+        #toast {
+            visibility: hidden; background: rgba(57, 197, 187, 0.9); 
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            color: #000;
+            padding: 12px 25px; border-radius: 30px; position: fixed;
+            bottom: 50px; left: 50%; transform: translateX(-50%) translateY(20px);
+            font-weight: bold; z-index: 10000; opacity: 0; transition: all 0.3s ease;
+            box-shadow: 0 8px 32px rgba(57, 197, 187, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        #toast.show { visibility: visible; opacity: 1; transform: translateX(-50%) translateY(0); }
+
+        @media (max-width: 768px) { .nav-right { display: none; } }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-left">
+            <i class="fas fa-cube cube-icon"></i>
+            <span class="brand">𝟕𝐁𝟖𝐓</span>
+        </div>
+        <div class="nav-right">
+            <a href="#features" class="nav-link">特色介紹</a>
+            <a href="#dashboard" class="nav-link">數據中心</a>
+            <a href="#anarchy-guide" class="nav-link">無規則指南</a>
+        </div>
+    </nav>
+
+    <div class="hero">
+        <h1>𝟕𝐁𝟖𝐓</h1>
+        <p style="color: #39c5bb; font-weight: bold; margin-top: 10px; letter-spacing: 2px;">永 遠 無 規 則 · 絕 對 自 由</p>
+        <div class="copy-card" onclick="handleCopy(event, '7B8T.org')">
+            <strong style="color: rgba(255, 255, 255, 0.7); font-size: 0.9rem;">Java Edition</strong>
+            <div class="ip-box">7B8T.org</div>
+            <p style="font-size:0.8rem; font-weight: bold; color: rgba(255, 255, 255, 0.6);">點擊複製 IP 加入戰局</p>
+        </div>
+    </div>
+
+    <div id="features" style="background: #fff;">
+        <div class="grid-container">
+            <div class="item"><i class="fas fa-map-marker-alt"></i><h3>/tpa 玩家傳送</h3><p>內建基礎傳送指令，找隊友、設陷阱圍剿更方便。</p></div>
+            <div class="item"><i class="fas fa-home"></i><h3>/home 居住點</h3><p>自由設置多個家，在廣闊的無規則世界中建立你的祕密基地。</p></div>
+            <div class="item"><i class="fas fa-skull"></i><h3>/kill 自殘重生</h3><p>卡點、被困或陷入絕境時的最後手段，一鍵重生重頭再來。</p></div>
+            <div class="item"><i class="fas fa-map"></i><h3>全新地圖開荒</h3><p>本次伺服器採用全新地圖，物資處女地，所有人站在同一個起跑線！</p></div>
+            <div class="item"><i class="fas fa-user-shield"></i><h3>高端伺服器主機</h3><p>伺服器全天候在線</p></div>
+            <div class="item"><i class="fas fa-bolt"></i><h3>不刪檔不重置</h3><p>只要地圖開啟，歷史與破壞就會永遠留存，成為這片大陸的活化石。</p></div>
+        </div>
+    </div>
+
+    <section id="dashboard" class="live-status-section">
+        <div class="section-title"><h2>伺服器數據中心</h2><p>即時監控運行參數與在線玩家</p></div>
+        <div class="dashboard-grid">
+            <div class="stat-card"><span><i class="fas fa-signal"></i> 運行狀態</span><span id="live-status" class="stat-value">讀取中...</span></div>
+            <div class="stat-card"><span><i class="fas fa-users"></i> 目前人數</span><span id="live-players" class="stat-value">0 / 0</span></div>
+            <div class="stat-card"><span><i class="fas fa-code-branch"></i> 核心版本</span><span id="live-version" class="stat-value">1.21.4</span></div>
+            <div class="stat-card"><span><i class="fas fa-bolt"></i> 即時延遲</span><span id="live-ping" class="stat-value">-- ms</span></div>
+        </div>
+
+        <div id="player-list"></div>
+    </section>
+
+    <div id="anarchy-guide" style="background: #f8f9fa;">
+        <div class="section-title" style="padding-top:60px;"><h2 style="color:#0d1117;">7B8T 無規則生存指南</h2><p style="color:#555;">這裡沒有法律，強者生存，弱者淘汰</p></div>
+        <div class="grid-container" style="background:transparent; padding-top: 20px;">
+            <div class="anarchy-item"><i class="fas fa-user-slash"></i><h3>沒有管理員干預</h3><p>這裡沒有外掛檢舉、沒有禁言。一切糾湯請用你手上的劍與炸藥來解決。</p></div>
+            <div class="anarchy-item"><i class="fas fa-fire"></i><h3>抄家與掠奪</h3><p>箱子不上鎖，領地不保護。請把你的基地建在數萬格之外，否則隨時被洗劫一空。</p></div>
+            <div class="anarchy-item"><i class="fas fa-globe-asia"></i><h3>全新資源地圖</h3><p>全新的世界重生點還未被黑曜石封印，趁現在地圖剛開放，進來搶奪第一手神裝與遠古殘骸！</p></div>
+            <div class="anarchy-item"><i class="fas fa-road"></i><h3>地獄交通建設</h3><p>地獄 1 格等於主世界 8 格，利用地獄快速移動，或者去破壞別人的地獄高速公路。</p></div>
+            <div class="anarchy-item"><i class="fas fa-users-cog"></i><h3>建立你的勢力</h3><p>你可以選擇當一個孤傲的流浪者，也可以在 Discord 招募隊友建立起統治出生點的強大組織。</p></div>
+            <div class="anarchy-item"><i class="fas fa-gavel"></i><h3>唯一的規則</h3><p>那就是「沒有規則」。背叛、偷襲、結盟，全部都是合法的遊戲玩法。</p></div>
+        </div>
+    </div>
+
+    <div class="float-btns">
+        <a href="https://discord.gg/BHT8nvZGPs" target="_blank" class="float-btn f-dc"><i class="fab fa-discord"></i></a>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-icons">
+            <a href="https://discord.gg/BHT8nvZGPs" target="_blank"><i class="fab fa-discord"></i></a>
+        </div>
+        <p class="copyright">© 2025-2026 Minecraft | 7B8T 無規則伺服器. 版權所有.</p>
+    </footer>
+
+    <div id="toast">✅ IP 複製成功，快去加入混亂吧！</div>
+
+    <script>
+        function handleCopy(event, text) {
+            navigator.clipboard.writeText(text);
+            const card = event.currentTarget;
+            const circle = document.createElement("span");
+            const diameter = Math.max(card.clientWidth, card.clientHeight);
+            circle.style.width = circle.style.height = `${diameter}px`;
+            circle.style.left = `${event.clientX - card.offsetLeft - (diameter/2)}px`;
+            circle.style.top = `${event.clientY - card.offsetTop - (diameter/2)}px`;
+            circle.classList.add("ripple");
+            const ripple = card.getElementsByClassName("ripple")[0];
+            if (ripple) ripple.remove();
+            card.appendChild(circle);
+
+            const t = document.getElementById("toast");
+            t.className = "show";
+            setTimeout(() => t.className = "", 2500);
+        }
+
+        async function updateServerInfo() {
+            const apiTarget = "washing-uk.gl.joinmc.link";
+            const start = Date.now();
+            try {
+                const res = await fetch(`https://api.mcstatus.io/v2/status/java/${apiTarget}`);
+                const data = await res.json();
+                const ping = Date.now() - start;
+
+                if (data.online) {
+                    document.getElementById('live-status').innerText = '伺服器開啟中';
+                    document.getElementById('live-status').style.color = '#39c5bb';
+                    document.getElementById('live-players').innerText = `${data.players.online} / ${data.players.max}`;
+                    document.getElementById('live-version').innerText = data.version.name_clean || "1.21.4";
+                    document.getElementById('live-ping').innerText = `${ping} ms`;
+
+                    const pList = document.getElementById('player-list');
+                    if (data.players.list && data.players.list.length > 0) {
+                        pList.innerHTML = data.players.list.map(p => `
+                            <div class="player-card">
+                                <img src="https://minotar.net/cube/${p.name_clean}/80.png" style="width:80px;">
+                                <div style="color:#39c5bb; font-size:0.8rem; margin-top:5px;">${p.name_clean}</div>
+                            </div>
+                        `).join('');
+                    } else {
+                        pList.innerHTML = '<div style="color:#8b949e;">目前沒有玩家在線</div>';
+                    }
+                } else {
+                    document.getElementById('live-status').innerText = '伺服器維護中';
+                    document.getElementById('live-status').style.color = '#f85149';
+                }
+            } catch (e) { console.error("API Error"); }
+        }
+
+        updateServerInfo();
+        setInterval(updateServerInfo, 30000);
+    </script>
+</body>
+</html>
