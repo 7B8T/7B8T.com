@@ -47,7 +47,7 @@
             border: 1px solid rgba(57, 197, 187, 0.35);
             border-radius: 16px;
             padding: 30px 25px;
-            width: 340px;
+            width: 420px;
             margin: 30px auto;
             cursor: pointer;
             box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37), 0 0 20px rgba(57, 197, 187, 0.2);
@@ -59,7 +59,7 @@
         }
         .copy-card:hover { border-color: rgba(57, 197, 187, 0.6); box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.45), 0 0 30px rgba(57, 197, 187, 0.4); }
         .copy-card:active { transform: scale(0.95); filter: brightness(1.2); }
-        .ip-box { background: rgba(0, 0, 0, 0.3); padding: 12px; border-radius: 8px; margin: 15px 0; font-family: monospace; font-size: 1.5rem; color: #39c5bb; font-weight: bold; border: 1px solid rgba(57, 197, 187, 0.2); text-shadow: 0 0 8px rgba(57, 197, 187, 0.4); }
+        .ip-box { background: rgba(0, 0, 0, 0.3); padding: 12px; border-radius: 8px; margin: 15px 0; font-family: monospace; font-size: 1.25rem; color: #39c5bb; font-weight: bold; border: 1px solid rgba(57, 197, 187, 0.2); text-shadow: 0 0 8px rgba(57, 197, 187, 0.4); word-break: break-all; }
         
         .ripple {
             position: absolute; background: rgba(57, 197, 187, 0.4);
@@ -131,6 +131,7 @@
         .footer-icons { display: flex; justify-content: center; gap: 35px; margin-bottom: 30px; }
         .footer-icons a { font-size: 3rem; transition: 0.3s; }
         .footer-icons .fa-discord { color: #5865f2; filter: drop-shadow(0 4px 10px rgba(88, 101, 242, 0.3)); }
+        .footer-icons .fa-youtube { color: #ff0000; filter: drop-shadow(0 4px 10px rgba(255, 0, 0, 0.4)); }
         
         .float-btns { position: fixed; bottom: 30px; right: 20px; display: flex; flex-direction: column; gap: 12px; z-index: 9999; }
         .float-btn {
@@ -139,6 +140,7 @@
             text-decoration: none; font-size: 1.5rem; box-shadow: 0 4px 15px rgba(0,0,0,0.3); transition: 0.3s;
         }
         .f-dc { background: #5865f2; box-shadow: 0 4px 20px rgba(88, 101, 242, 0.4); }
+        .f-yt { background: #ff0000; box-shadow: 0 4px 20px rgba(255, 0, 0, 0.4); }
         .float-btn:hover { transform: scale(1.1); }
 
         #toast {
@@ -154,7 +156,7 @@
         }
         #toast.show { visibility: visible; opacity: 1; transform: translateX(-50%) translateY(0); }
 
-        @media (max-width: 768px) { .nav-right { display: none; } }
+        @media (max-width: 768px) { .nav-right { display: none; } .copy-card { width: 90%; } }
     </style>
 </head>
 <body>
@@ -174,9 +176,9 @@
     <div class="hero">
         <h1>𝟕𝐁𝟖𝐓</h1>
         <p style="color: #39c5bb; font-weight: bold; margin-top: 10px; letter-spacing: 2px;">永 遠 無 規 則 · 絕 對 自 由</p>
-        <div class="copy-card" onclick="handleCopy(event, '7B8T.org')">
+        <div class="copy-card" onclick="handleCopy(event, 'washing-uk.gl.joinmc.link')">
             <strong style="color: rgba(255, 255, 255, 0.7); font-size: 0.9rem;">Java Edition</strong>
-            <div class="ip-box">7B8T.org</div>
+            <div class="ip-box">washing-uk.gl.joinmc.link</div>
             <p style="font-size:0.8rem; font-weight: bold; color: rgba(255, 255, 255, 0.6);">點擊複製 IP 加入戰局</p>
         </div>
     </div>
@@ -193,7 +195,7 @@
     </div>
 
     <section id="dashboard" class="live-status-section">
-        <div class="section-title"><h2>伺服器數據中心</h2><p>即時監控運行參數與在線玩家</p></div>
+        <div class="section-title"><h2>伺服器數據中心</h2><p>即時監控運行 parameters 與在線玩家</p></div>
         <div class="dashboard-grid">
             <div class="stat-card"><span><i class="fas fa-signal"></i> 運行狀態</span><span id="live-status" class="stat-value">讀取中...</span></div>
             <div class="stat-card"><span><i class="fas fa-users"></i> 目前人數</span><span id="live-players" class="stat-value">0 / 0</span></div>
@@ -207,7 +209,7 @@
     <div id="anarchy-guide" style="background: #f8f9fa;">
         <div class="section-title" style="padding-top:60px;"><h2 style="color:#0d1117;">7B8T 無規則生存指南</h2><p style="color:#555;">這裡沒有法律，強者生存，弱者淘汰</p></div>
         <div class="grid-container" style="background:transparent; padding-top: 20px;">
-            <div class="anarchy-item"><i class="fas fa-user-slash"></i><h3>沒有管理員干預</h3><p>這裡沒有外掛檢舉、沒有禁言。一切糾湯請用你手上的劍與炸藥來解決。</p></div>
+            <div class="anarchy-item"><i class="fas fa-user-slash"></i><h3>沒有管理員干預</h3><p>這裡沒有外掛檢舉、沒有禁言。一切糾紛請用你手上的劍與炸藥來解決。</p></div>
             <div class="anarchy-item"><i class="fas fa-fire"></i><h3>抄家與掠奪</h3><p>箱子不上鎖，領地不保護。請把你的基地建在數萬格之外，否則隨時被洗劫一空。</p></div>
             <div class="anarchy-item"><i class="fas fa-globe-asia"></i><h3>全新資源地圖</h3><p>全新的世界重生點還未被黑曜石封印，趁現在地圖剛開放，進來搶奪第一手神裝與遠古殘骸！</p></div>
             <div class="anarchy-item"><i class="fas fa-road"></i><h3>地獄交通建設</h3><p>地獄 1 格等於主世界 8 格，利用地獄快速移動，或者去破壞別人的地獄高速公路。</p></div>
@@ -217,17 +219,19 @@
     </div>
 
     <div class="float-btns">
+        <a href="https://youtube.com/@7b8t?si=kLOJx_wiYYrtgvrS" target="_blank" class="float-btn f-yt"><i class="fab fa-youtube"></i></a>
         <a href="https://discord.gg/BHT8nvZGPs" target="_blank" class="float-btn f-dc"><i class="fab fa-discord"></i></a>
     </div>
 
     <footer class="footer">
         <div class="footer-icons">
             <a href="https://discord.gg/BHT8nvZGPs" target="_blank"><i class="fab fa-discord"></i></a>
+            <a href="https://youtube.com/@7b8t?si=kLOJx_wiYYrtgvrS" target="_blank"><i class="fab fa-youtube"></i></a>
         </div>
         <p class="copyright">© 2025-2026 Minecraft | 7B8T 無規則伺服器. 版權所有.</p>
     </footer>
 
-    <div id="toast">✅ IP 複製成功，快去加入混亂吧！</div>
+    <div id="toast">✅ IP 複製成功，快加入 𝟟𝔹𝟠𝕋 吧！</div>
 
     <script>
         function handleCopy(event, text) {
